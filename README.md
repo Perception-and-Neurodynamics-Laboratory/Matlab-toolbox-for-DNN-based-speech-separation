@@ -48,23 +48,23 @@ A 4-hidden-layer DNN with sigmoid hidden activation is used for mask estimation.
 
 1. **Load configurations in load_config.m:**
 
-  a. 'train_list' and 'test_list' specify lists of clean utterances for training and test.  
-  b. 'mix_db' specifies the SNR of training and test mixtures.  
-  c. 'is_ratio_mask' specifies the mask type (0: binary mask, 1: ratio mask).  
-  d. 'is_gen_mix', 'is_gen_feat' and 'is_dnn' indicate whether to perform different steps in speech separation.
+  (a) 'train_list' and 'test_list' specify lists of clean utterances for training and test.  
+  (b) 'mix_db' specifies the SNR of training and test mixtures.  
+  (c) 'is_ratio_mask' specifies the mask type (0: binary mask, 1: ratio mask).  
+  (d) 'is_gen_mix', 'is_gen_feat' and 'is_dnn' indicate whether to perform different steps in speech separation.
 
 2. **Create data folders for this demo.**
 
 3. **Perform DNN based speech separation in three steps:**
 
-  a. Generate training and test mixtures.  
-  b. Generate training and test features / masks.  
-  c. DNN training and test. To use a different network architecture, you may change the configurations ('opts.*') in ./dnn/main/dnn_train.m:  
-    \1. 'opts.unit_type_hidden' specifies the activation function for hidden layers ('sigm': sigmoid, 'relu': ReLU).  
-    \2. 'opts.isPretrain' indicates whether to perform pretraining (0: no pretraining, 1: pretraining). Note that pretraining is only supported for the sigmoid hidden activation function.  
-    \3. 'opts.hid_struct' specifies the numbers of hidden layers and hidden units.  
-    \4. 'opts.sgd_max_epoch' specifies the maximum number of training epochs.  
-    \5. 'opts.isDropout' specifies whether to use dropout regularization.
+  (a) Generate training and test mixtures.  
+  (b) Generate training and test features / masks.  
+  (c) DNN training and test. To use a different network architecture, you may change the configurations ('opts.*') in ./dnn/main/dnn_train.m:  
+</indent>  (1) 'opts.unit_type_hidden' specifies the activation function for hidden layers ('sigm': sigmoid, 'relu': ReLU).  
+  (2) 'opts.isPretrain' indicates whether to perform pretraining (0: no pretraining, 1: pretraining). Note that pretraining is only supported for the sigmoid hidden activation function.  
+  (3) 'opts.hid_struct' specifies the numbers of hidden layers and hidden units.  
+  (4) 'opts.sgd_max_epoch' specifies the maximum number of training epochs.  
+  (5) 'opts.isDropout' specifies whether to use dropout regularization.
 
 **When DNN training and test are finished, you will find the following speech separation results:**  
 DATA/factory/dnn/WAVE/db-2/: mixture, clean speech and resynthesized speech.  
