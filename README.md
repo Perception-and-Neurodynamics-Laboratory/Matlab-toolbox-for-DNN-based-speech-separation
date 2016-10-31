@@ -12,25 +12,25 @@ The toolbox is provided by the OSU Perception and Neurodynamics Laboratory (PNL)
 **config/**  
 Lists of clean utterances for training and test.
 
-**DATA/**
+**DATA/**  
 Mixtures, features, masks and separated speech are stored here.
 
-**dnn/**
+**dnn/**  
 Code for DNN training and test, where dnn/main/ includes key functions for DNN training and test. dnn/pretraining/ includes code for unsupervised DNN pretraining.
 
-**gen_mixture/**
+**gen_mixture/**  
 Code for creating mixtures from noise and clean utterances.
 
-**get_feat/**
+**get_feat/**  
 Code for acoustic features and ideal mask calculation.
 
-**premix_data/**
+**premix_data/**  
 Sample data including clean speech and factory noise.
 
-**load_config.m**
+**load_config.m**  
 It configures feature type, noise type, training utterance list, test utterance list, mixture SNR, mask type, etc.
 
-**RUN.m**
+**RUN.m**  
 It loads configurations from load_config.m and runs a speech separation demo.
 
 
