@@ -1,9 +1,9 @@
-function [cost, net_gradients] = computeNetGradientNoRolling(net, data, label, opts)
+function [cost, net_gradients] = computeNetGradientNoRolling(net, data, label, opts, total_num_samples)
 num_net_layer = length(net);
 unit_type_output = opts.unit_type_output;
 unit_type_hidden = opts.unit_type_hidden;
 
-[forward_path drop_mask] = forwardPass(net, data, opts);
+[forward_path, drop_mask] = forwardPass(net, data, opts);
 num_sample = size(data,1);
 output = forward_path{num_net_layer+1}';
 %% cost function: mse, xentropy, softmax_xentropy
@@ -12,7 +12,7 @@ switch opts.cost_function
         cost = 0.5*sum(sum((label-output).^2))/num_sample;
         output_delta = -(label-output).*compute_unit_gradient(output,unit_type_output);
     case 'xentropy'
-        cost = -mean(label.*log(output) + (1-label).*log(1-output));
+        cost = -sum(sum(label.*log(output) + (1-label).*log(1-output), 2))/total_num_samples;
         if strcmp(unit_type_output,'sigm');
             output_delta = -(label-output);
         else
