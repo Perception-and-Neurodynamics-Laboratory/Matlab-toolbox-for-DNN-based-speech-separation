@@ -51,7 +51,7 @@ for epoch = 1:opts.sgd_max_epoch
         end
         
         %backprop: core code
-        [cost,net_grad] = computeNetGradientNoRolling(net_iterative, batch_data, batch_label, opts);
+        [cost,net_grad] = computeNetGradientNoRolling(net_iterative, batch_data, batch_label, opts, num_samples);
 
         %supports only sgd
         for ll = 1:num_net_layer
